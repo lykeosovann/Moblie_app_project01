@@ -93,7 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 minimumSize: Size(double.infinity, 50),
                 backgroundColor: Color(0xff1A1A2E),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/otp'); 
+              },
               child: Text('Login', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),),
             ),
             SizedBox(height: 10),

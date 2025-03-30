@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate/view/login.dart';
-import 'package:real_estate/view/forget_pass.dart';
+import 'package:real_estate/view/indexfile.dart';
 
 void main() {
   runApp( const MyApp());
@@ -18,6 +17,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
+        '/otp': (context) => const VerificationCodeScreen(),
         '/forgotPassword': (context) => const ForgotPasswordScreen(),
       },
     );
