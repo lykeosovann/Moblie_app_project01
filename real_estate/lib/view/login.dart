@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
+import 'package:flutter/gestures.dart';
 
-
-class Login extends StatelessWidget {
-  const Login({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-    );
-  }
-}
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -22,27 +14,34 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _obscurePassword = true;
   bool _rememberMe = false;
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/login_illustration.png', height: 150), // Add your image asset
-            SizedBox(height: 20),
-            Text(
-              'Login',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            Image.asset('lib/img/Login-rafiki.png', height: 230), // Add your image asset
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Login',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,),
+              ),
             ),
-            Text('Welcome back! Please log in to your account.'),
+            Align(
+              alignment: Alignment.centerLeft,
+              child:Text('Welcome back! Please log in to your account.'),
+              ),
+            
             SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Username',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
               ),
             ),
             SizedBox(height: 10),
@@ -51,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
               obscureText: _obscurePassword,
               decoration: InputDecoration(
                 labelText: 'Password',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                 suffixIcon: IconButton(
                   icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility, color: Colors.grey),
                   onPressed: () {
@@ -78,9 +77,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text('Remember me'),
                   ],
                 ),
-                Text(
-                  'Forgot password?',
-                  style: TextStyle(color: Colors.red),
+                RichText(text: TextSpan(
+                  text: 'Forgot Password?',
+                  style: TextStyle(color: Colors.red, fontSize: 14),
+                  recognizer: TapGestureRecognizer()..onTap = () {
+                    Navigator.pushNamed(context, '/forgotPassword'); 
+                  },
+                  )
                 ),
               ],
             ),
@@ -88,10 +91,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
-                backgroundColor: Colors.black,
+                backgroundColor: Color(0xff1A1A2E),
               ),
               onPressed: () {},
-              child: Text('Login', style: TextStyle(color: Colors.white)),
+              child: Text('Login', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),),
             ),
             SizedBox(height: 10),
             OutlinedButton(
@@ -99,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 minimumSize: Size(double.infinity, 50),
               ),
               onPressed: () {},
-              child: Text('Sign Up'),
+              child: Text('Sign Up', style: TextStyle(fontSize: 18, color: Color(0xff1A1A2E), fontWeight: FontWeight.w500),),
             ),
             SizedBox(height: 20),
             Row(
@@ -127,19 +130,18 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  icon: Image.asset('assets/facebook.png'),
+                  icon: FaIcon(FontAwesomeIcons.facebook, size: 30, color: Colors.blue,),
+                  onPressed: () {},
+                ),
+                Gap(40),
+                IconButton(
+                  icon: FaIcon(FontAwesomeIcons.google, size: 30, color: Colors.red,),
                   iconSize: 40,
                   onPressed: () {},
                 ),
-                SizedBox(width: 10),
+                Gap(40),
                 IconButton(
-                  icon: Image.asset('assets/google.png'),
-                  iconSize: 40,
-                  onPressed: () {},
-                ),
-                SizedBox(width: 10),
-                IconButton(
-                  icon: Image.asset('assets/apple.png'),
+                  icon: FaIcon(FontAwesomeIcons.apple, size: 30, color: Colors.black,),
                   iconSize: 40,
                   onPressed: () {},
                 ),
